@@ -1,0 +1,81 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'cherio' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'cherio', null ]
+6 verbose cache add name=undefined spec="cherio" args=["cherio",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'cherio',
+7 verbose parsed url   path: 'cherio',
+7 verbose parsed url   href: 'cherio' }
+8 silly lockFile 8268ac7a-cherio cherio
+9 verbose lock cherio /home/sabman/.npm/8268ac7a-cherio.lock
+10 silly lockFile 8268ac7a-cherio cherio
+11 silly lockFile 8268ac7a-cherio cherio
+12 verbose addNamed [ 'cherio', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 11d865d2-cherio cherio@
+15 verbose lock cherio@ /home/sabman/.npm/11d865d2-cherio.lock
+16 silly addNameRange { name: 'cherio', range: '*', hasData: false }
+17 verbose request where is /cherio
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 412753d44ec812c6
+20 verbose url raw /cherio
+21 verbose url resolving [ 'https://registry.npmjs.org/', './cherio' ]
+22 verbose url resolved https://registry.npmjs.org/cherio
+23 verbose request where is https://registry.npmjs.org/cherio
+24 info trying registry request attempt 1 at 10:16:43
+25 http GET https://registry.npmjs.org/cherio
+26 http 404 https://registry.npmjs.org/cherio
+27 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '51',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   date: 'Sat, 27 Jun 2015 17:16:34 GMT',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   connection: 'keep-alive',
+27 verbose headers   'x-served-by': 'cache-ord1735-ORD',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1435425394.303539,VS0,VE38' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '51',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     date: 'Sat, 27 Jun 2015 17:16:34 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-ord1735-ORD',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1435425394.303539,VS0,VE38' } ]
+29 silly lockFile 11d865d2-cherio cherio@
+30 silly lockFile 11d865d2-cherio cherio@
+31 error 404 404 Not Found: cherio
+31 error 404
+31 error 404 'cherio' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Linux 3.16.0-33-generic
+33 error command "/usr/bin/node" "/usr/bin/npm" "install" "cherio"
+34 error cwd /home/sabman/Projects/nlp
+35 error node -v v0.10.38
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]
