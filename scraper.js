@@ -2,7 +2,8 @@ var request = require("request"),
 	natural = require('natural'),
 	cheerio = require("cheerio"),
 	Entities = require("html-entities").AllHtmlEntities,
-	striptags = require('striptags');
+	striptags = require('striptags'),
+	Q = require('q');
 
 
 var isCapital = function(c) {
@@ -30,7 +31,7 @@ var isCandidate = function (word, isFirstWord) {
 * remove html tags and return text
 **/
 var extractContent = function(text) {
-	var selectors = ['.blog-body', 'article'];
+	var selectors = ['.blog-body', 'article', '.post'];
 	var $ = cheerio.load(text);
 	var entities = new Entities();
 	var i = 0;
@@ -41,6 +42,7 @@ var extractContent = function(text) {
 			currentSelector = selector;
 		}
 	});
+	if(!currentSelector) currentSelector = 'body';
 	var content = $(currentSelector).html()
 	content = striptags(content);
 	content =  entities.decode(content);
@@ -53,7 +55,9 @@ var extractTokens = function(text) {
 	return tokens; 
 }
 
-exports.getCandidateTokens = function(url,promise) {
+exports.getCandidateTokens = function(url) {
+	if(!url) {console.log('No URL provided!'); return;}
+	var defered = Q.defer();
 	request(url, function (error, response, body) {
 		if (!error) {
 			var content = extractContent(body);
@@ -73,9 +77,10 @@ exports.getCandidateTokens = function(url,promise) {
 				potentialMovieNames.push(candidate);
 				index++;
 			}
-			return promise.resolve(potentialMovieNames);
+			defered.resolve(potentialMovieNames);
 		} else {
 			console.log("We’ve encountered an error: " + error);
 		}
 	});
+	return defered.promise;
 }
