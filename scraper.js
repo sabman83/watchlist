@@ -3,6 +3,7 @@ var request = require("request"),
 	cheerio = require("cheerio"),
 	Entities = require("html-entities").AllHtmlEntities,
 	striptags = require('striptags'),
+	fs = require('fs'),
 	Q = require('q');
 
 
@@ -17,7 +18,7 @@ var isCapital = function(c) {
 **/
 var isCandidate = function (word, isFirstWord) {
 	if(!word) return;
-	var commonWords = ['&', 'and', 'in', 'a', 'the'];
+	var commonWords = ['&', 'and', 'in', 'a', 'the', 'of', 'on'];
 	var c = word.charAt(0);
 	var acceptableCommonWord = false;
 	if (!isFirstWord) acceptableCommonWord = (commonWords.indexOf(word) !== -1);
@@ -50,7 +51,7 @@ var extractContent = function(text) {
 }
 
 var extractTokens = function(text) {
-	var regexp = new RegExp(/[a-zA-Z0-9\'\`\’\&\-\.\(\)]+/g);
+	var regexp = new RegExp(/[a-zA-Z0-9\'\`\’\&\.\(\)\,]+/g);
 	var tokens = text.match(regexp);
 	return tokens; 
 }
@@ -77,6 +78,11 @@ exports.getCandidateTokens = function(url) {
 				potentialMovieNames.push(candidate);
 				index++;
 			}
+			stopwords = fs.readFileSync('./stopwords.txt', 'utf-8');
+			stopwords = stopwords.split(',');
+			potentialMovieNames = potentialMovieNames.filter(function(name){
+				return stopwords.indexOf(name.toLowerCase()) == -1; 
+			});
 			defered.resolve(potentialMovieNames);
 		} else {
 			console.log("We’ve encountered an error: " + error);

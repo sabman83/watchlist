@@ -1,7 +1,6 @@
 var Q = require('q'),
 scraper = require('./scraper.js'),
 Feedly = require('feedly'),
-fs = require('fs'),
 tagNames = null,
 urls = [];
 
